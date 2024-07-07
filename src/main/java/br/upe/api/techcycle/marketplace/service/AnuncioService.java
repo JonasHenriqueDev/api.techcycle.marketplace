@@ -60,4 +60,8 @@ public class AnuncioService {
             throw new RuntimeException("Anúncio não encontrado");
         }
     }
+
+    public void deletarAnuncio(Long id) {
+        anuncioRepository.deleteById(id);
+    }
 }

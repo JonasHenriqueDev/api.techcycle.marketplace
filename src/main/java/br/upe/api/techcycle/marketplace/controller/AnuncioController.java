@@ -53,4 +53,10 @@ public class AnuncioController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao adicionar imagens: " + e.getMessage());
         }
     }
+
+    @DeleteMapping
+    public String deletarPorId(@PathVariable Long id) {
+        anuncioService.deletarAnuncio(id);
+        return "Deletado com sucesso!";
+    }
 }
