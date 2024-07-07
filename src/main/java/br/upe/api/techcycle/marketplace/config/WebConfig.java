@@ -28,7 +28,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         StringHttpMessageConverter stringConverter = new StringHttpMessageConverter();
         stringConverter.setWriteAcceptCharset(false);
-        stringConverter.setDefaultCharset(StandardCharsets.UTF_8);
+        stringConverter.setDefaultCharset(StandardCharsets.ISO_8859_1);
 
         converters.add(0, stringConverter);
     }
