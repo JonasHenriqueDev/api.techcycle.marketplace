@@ -1,7 +1,8 @@
-package br.upe.api.techcycle.marketplace.service;
+package br.upe.api.techcycle.marketplace.unidade.service;
 
 import br.upe.api.techcycle.marketplace.dominio.Anuncio;
 import br.upe.api.techcycle.marketplace.repository.AnuncioRepository;
+import br.upe.api.techcycle.marketplace.service.AnuncioService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
