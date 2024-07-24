@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-@RequestMapping("/painel")
+@RequestMapping("/pontos-coleta")
 public class PainelController {
     @Autowired
     private PontoColetaService pontoColetaService;
