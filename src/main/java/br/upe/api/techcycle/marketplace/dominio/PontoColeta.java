@@ -15,7 +15,7 @@ public class PontoColeta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String endereco;
-    private String descricao;
+    private String longitude;
+    private String latitude;
 
 }

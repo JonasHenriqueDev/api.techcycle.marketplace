@@ -40,8 +40,8 @@ public class PontoColetaController {
         if (pontoColeta.isPresent()) {
             PontoColeta updatedPontoColeta = pontoColeta.get();
             updatedPontoColeta.setNome(pontoColetaDetails.getNome());
-            updatedPontoColeta.setEndereco(pontoColetaDetails.getEndereco());
-            updatedPontoColeta.setDescricao(pontoColetaDetails.getDescricao());
+            updatedPontoColeta.setLatitude(pontoColetaDetails.getLatitude());
+            updatedPontoColeta.setLongitude(pontoColetaDetails.getLongitude());
             pontoColetaService.save(updatedPontoColeta);
             return ResponseEntity.ok(updatedPontoColeta);
         } else {
