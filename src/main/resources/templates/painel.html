@@ -1,10 +1,129 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Página de Exemplo</title>
+    <title>TechCycle | Painel</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        form {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], button {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+        }
+        button {
+            background: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            width: auto;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        .actions form {
+            display: inline;
+        }
+    </style>
 </head>
 <body>
-<h1>Bem-vindo à Página de Exemplo</h1>
-<p>Isso é uma página HTML gerada pelo Spring Boot com Thymeleaf.</p>
+<div class="container">
+    <h1>TechCycle | Painel</h1>
+
+    <!-- Formulário para adicionar um novo ponto de coleta -->
+    <h2>Adicionar Ponto de Coleta</h2>
+    <form action="/pontos-coleta/adicionar" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <label for="longitude">Longitude:</label>
+        <input type="text" id="longitude" name="longitude" required>
+        <label for="latitude">Latitude:</label>
+        <input type="text" id="latitude" name="latitude" required>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <!-- Lista de pontos de coleta -->
+    <h2>Lista de Pontos de Coleta</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Longitude</th>
+            <th>Latitude</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ponto : ${pontos}">
+            <td th:text="${ponto.id}"></td>
+            <td th:text="${ponto.nome}"></td>
+            <td th:text="${ponto.longitude}"></td>
+            <td th:text="${ponto.latitude}"></td>
+            <td class="actions">
+                <!-- Formulário para atualizar o ponto de coleta -->
+                <form action="/pontos-coleta/atualizar" method="post">
+                    <input type="hidden" name="id" th:value="${ponto.id}">
+                    <input type="text" name="nome" th:value="${ponto.nome}" required>
+                    <input type="text" name="longitude" th:value="${ponto.longitude}" required>
+                    <input type="text" name="latitude" th:value="${ponto.latitude}" required>
+                    <button type="submit">Atualizar</button>
+                </form>
+
+                <!-- Formulário para remover o ponto de coleta -->
+                <form action="/pontos-coleta/remover" method="post">
+                    <input type="hidden" name="id" th:value="${ponto.id}">
+                    <button type="submit">Remover</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
